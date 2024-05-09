@@ -1,18 +1,19 @@
 package com.srabbijan.jobtask.presentation.dashboard
 
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.srabbijan.jobtask.data.remote.dto.DemoRemoteData
-import com.srabbijan.jobtask.presentation.commonComponents.EmptyScreen
-import com.srabbijan.jobtask.presentation.commonComponents.LoadingScreen
+import com.srabbijan.jobtask.presentation.commonComponents.errorViews.EmptyScreen
+import com.srabbijan.jobtask.presentation.commonComponents.shimmer.ShimmerEffectHome
+import com.srabbijan.jobtask.presentation.dashboard.components.HomeVideoCard
 
 @Composable
 fun DashboardScreen(state: DashboardState, event: (DashboardEvent) -> Unit) {
     if (state.isLoading) {
-        LoadingScreen()
+        ShimmerEffectHome()
     } else {
         if (state.error != null) {
             EmptyScreen {
@@ -31,10 +32,10 @@ fun DashboardScreen(state: DashboardState, event: (DashboardEvent) -> Unit) {
 
 
 @Composable
-fun DashboardContent(data: List<DemoRemoteData>, modifier: Modifier = Modifier) {
-    LazyColumn {
-        itemsIndexed(data) { index, item ->
-            Text(text = item.title ?: "")
+fun DashboardContent(data: List<DemoRemoteData>,) {
+    LazyVerticalGrid(columns = GridCells.Adaptive(300.dp)) {
+        items(data) {
+            HomeVideoCard(it)
         }
     }
 }
