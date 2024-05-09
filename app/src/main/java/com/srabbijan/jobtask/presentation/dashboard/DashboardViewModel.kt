@@ -27,6 +27,7 @@ class DashboardViewModel @Inject constructor(
     fun onEvent(event: DashboardEvent) {
         when (event) {
             is DashboardEvent.onRefresh -> {
+                _state.value = _state.value.copy(isLoading = true)
                 fetchDemoData()
             }
         }

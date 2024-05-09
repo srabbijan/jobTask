@@ -4,13 +4,13 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.srabbijan.jobtask.data.local.dao.DemoDao
 import com.srabbijan.jobtask.data.local.entity.DemoEntity
-
+import com.srabbijan.jobtask.data.remote.dto.DemoRemoteData
 
 @Database(
     entities = [
-        DemoEntity::class
+        DemoRemoteData::class
     ],
-    version = 1
+    version = 2
 )
 abstract class LocalDB : RoomDatabase() {
     abstract val demoDao: DemoDao
