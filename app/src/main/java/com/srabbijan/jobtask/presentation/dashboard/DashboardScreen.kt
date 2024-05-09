@@ -6,6 +6,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.srabbijan.jobtask.data.remote.dto.DemoRemoteData
+import com.srabbijan.jobtask.presentation.commonComponents.EmptyScreen
+import com.srabbijan.jobtask.presentation.commonComponents.ErrorScreen
+import com.srabbijan.jobtask.presentation.commonComponents.LoadingScreen
 
 @Composable
 fun DashboardScreen(state: DashboardState) {
@@ -22,20 +25,20 @@ fun DashboardScreen(state: DashboardState) {
     }
 }
 
-@Composable
-fun LoadingScreen(modifier: Modifier = Modifier) {
-    Text(text = "Loading")
-}
-@Composable
-fun ErrorScreen(errorMsg: String, modifier: Modifier = Modifier) {
-    Text(text = "errror $errorMsg")
-}
+
+
 @Composable
 fun DashboardContent(data: List<DemoRemoteData>, modifier: Modifier = Modifier) {
-    LazyColumn {
-        itemsIndexed(data){
-            index, item ->
-            Text(text = item.title?:"")
+    if (data.isEmpty()){
+        EmptyScreen()
+    }
+    else{
+        LazyColumn {
+            itemsIndexed(data){
+                    index, item ->
+                Text(text = item.title?:"")
+            }
         }
     }
+
 }

@@ -25,16 +25,13 @@ import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.graphics.Color.Companion.LightGray
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.paging.LoadState
 import com.srabbijan.jobtask.R
-import java.net.ConnectException
-import java.net.SocketTimeoutException
 
 @Composable
-fun EmptyScreen(error: LoadState.Error? = null) {
+fun EmptyScreen(error: String? = null) {
 
     var message by remember {
-        mutableStateOf(parseErrorMessage(error = error))
+        mutableStateOf("No Data Found")
     }
 
     var icon by remember {
@@ -42,8 +39,10 @@ fun EmptyScreen(error: LoadState.Error? = null) {
     }
 
     if (error == null){
-        message = "You have not saved news so far !"
+        message = "You have not saved data so far !"
         icon = R.drawable.ic_search_document
+    }else{
+        message = error
     }
 
     var startAnimation by remember {
@@ -87,22 +86,5 @@ fun EmptyContent(alphaAnim: Float, message: String, iconId: Int) {
             style = MaterialTheme.typography.bodyMedium,
             color = if (isSystemInDarkTheme()) LightGray else DarkGray,
         )
-    }
-}
-
-
-fun parseErrorMessage(error: LoadState.Error?): String {
-    return when (error?.error) {
-        is SocketTimeoutException -> {
-            "Server Unavailable."
-        }
-
-        is ConnectException -> {
-            "Internet Unavailable."
-        }
-
-        else -> {
-            "Unknown Error."
-        }
     }
 }

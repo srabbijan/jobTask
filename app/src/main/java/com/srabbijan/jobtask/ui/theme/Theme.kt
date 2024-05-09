@@ -1,6 +1,5 @@
 package com.srabbijan.jobtask.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -20,15 +19,10 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-
-    background =  Color.White,
-    surface =  Color.White,
-    onPrimary = Blue,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
+    background = Color.White,
+    primary = Blue,
     error = LightRed,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
+    surface = Color.White
 )
 
 @Composable
