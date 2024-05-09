@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.plugin)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -114,4 +116,10 @@ dependencies {
     implementation(libs.accompanist.systemuicontroller)
 
     implementation(libs.composeIcons.featherIcons)
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.exoplayer.dash)
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.ffmpeg.platform)
+    implementation(libs.core)
+    implementation(libs.custom.ui)
 }

@@ -11,7 +11,11 @@ import com.srabbijan.jobtask.presentation.commonComponents.shimmer.ShimmerEffect
 import com.srabbijan.jobtask.presentation.dashboard.components.HomeVideoCard
 
 @Composable
-fun DashboardScreen(state: DashboardState, event: (DashboardEvent) -> Unit) {
+fun DashboardScreen(
+    state: DashboardState,
+    event: (DashboardEvent) -> Unit,
+    navigateToVideoPlayer: (DemoRemoteData) -> Unit
+) {
     if (state.isLoading) {
         ShimmerEffectHome()
     } else {
@@ -21,21 +25,25 @@ fun DashboardScreen(state: DashboardState, event: (DashboardEvent) -> Unit) {
             }
         } else {
             if (state.demoData.isEmpty()) {
-                EmptyScreen() {
+                EmptyScreen {
                     event.invoke(DashboardEvent.onRefresh)
                 }
             }
-            DashboardContent(state.demoData)
+            DashboardContent(state.demoData) {
+                navigateToVideoPlayer.invoke(it)
+            }
         }
     }
 }
 
 
 @Composable
-fun DashboardContent(data: List<DemoRemoteData>,) {
+fun DashboardContent(data: List<DemoRemoteData>, onClick: (DemoRemoteData) -> Unit) {
     LazyVerticalGrid(columns = GridCells.Adaptive(300.dp)) {
         items(data) {
-            HomeVideoCard(it)
+            HomeVideoCard(it) {
+                onClick.invoke(it)
+            }
         }
     }
 }

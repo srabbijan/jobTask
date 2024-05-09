@@ -5,4 +5,5 @@ sealed class Route (
 ){
     data object AppStartNavigation : Route("appStartNavigation")
     data object DashboardNavigationScreen : Route("dashboardNavigationScreen")
+    data object VideoPlayerScreen : Route("videoPlayerScreen")
 }
