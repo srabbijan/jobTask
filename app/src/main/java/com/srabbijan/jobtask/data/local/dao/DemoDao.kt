@@ -10,7 +10,7 @@ import com.srabbijan.jobtask.data.remote.dto.DemoRemoteData
 @Dao
 interface DemoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun upsertData(data: DemoRemoteData)
+    suspend fun upsertData(data: List<DemoRemoteData>)
     @Query("SELECT * FROM demo_remote_data_table")
     suspend fun fetchLocalData():List<DemoRemoteData>
 

@@ -34,7 +34,7 @@ class DashboardRepositoryImpl(
                             data = null
                         )
                     )
-
+                demoDao.upsertData(simpleResponse)
                 emit(DataResource.success(data = simpleResponse))
             }
 
