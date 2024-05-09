@@ -1,4 +1,4 @@
-package com.srabbijan.jobtask.presentation.commonComponents
+package com.srabbijan.jobtask.presentation.commonComponents.buttons
 
 
 import androidx.compose.foundation.background

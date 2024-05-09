@@ -1,4 +1,4 @@
-package com.srabbijan.jobtask.presentation.commonComponents
+package com.srabbijan.jobtask.presentation.commonComponents.errorViews
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.srabbijan.jobtask.R
+import com.srabbijan.jobtask.presentation.commonComponents.buttons.GradientButton
 
 @Composable
 fun EmptyScreen(

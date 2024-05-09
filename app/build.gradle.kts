@@ -113,4 +113,5 @@ dependencies {
     //Accompanist
     implementation(libs.accompanist.systemuicontroller)
 
+    implementation(libs.composeIcons.featherIcons)
 }

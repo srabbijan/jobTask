@@ -48,8 +48,8 @@ class DashboardViewModel @Inject constructor(
                     Status.SUCCESS -> {
                         _state.value = _state.value.copy(isLoading = false)
                         val data = response.data as? List<DemoRemoteData> ?: return@collect
-//                        _state.value = _state.value.copy(demoData = data)
-                        _state.value = _state.value.copy(error = "response.message")
+                        _state.value = _state.value.copy(demoData = data)
+//                        _state.value = _state.value.copy(error = "response.message")
                     }
 
                     Status.ERROR -> {
