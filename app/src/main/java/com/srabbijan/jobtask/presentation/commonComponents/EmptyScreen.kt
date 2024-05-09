@@ -1,90 +1,95 @@
 package com.srabbijan.jobtask.presentation.commonComponents
 
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.graphics.Color.Companion.DarkGray
-import androidx.compose.ui.graphics.Color.Companion.LightGray
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.srabbijan.jobtask.R
 
 @Composable
-fun EmptyScreen(error: String? = null) {
+fun EmptyScreen(
+    errorMsg: String = "Something went wrong\nPlease try again",
+    buttonText: String = "Retry",
+    onRetry: () -> Unit
+) {
 
-    var message by remember {
-        mutableStateOf("No Data Found")
+    Surface(modifier = Modifier.fillMaxSize()) {
+
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            Image(
+                painter = painterResource(id = R.drawable.oh_no),
+                contentDescription = null,
+                contentScale = ContentScale.Fit,
+                modifier = Modifier
+                    .height(200.dp)
+                    .fillMaxWidth(),
+
+                )
+
+            Spacer(modifier = Modifier.height(20.dp))
+            //.........................Text: title
+            Text(
+                text = "Ops!",
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .padding(top = 20.dp)
+                    .fillMaxWidth(),
+                letterSpacing = 2.sp,
+                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.primary,
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+
+            //.........................Text : description
+            Text(
+                text = errorMsg,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .padding(top = 10.dp, start = 25.dp, end = 25.dp)
+                    .fillMaxWidth(),
+                letterSpacing = 1.sp,
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.primary,
+            )
+            //.........................Spacer
+            Spacer(modifier = Modifier.height(24.dp))
+
+            val cornerRadius = 16.dp
+            val gradientColor = listOf(Color(0xFFff669f), Color(0xFFff8961))
+            GradientButton(
+                gradientColors = gradientColor,
+                cornerRadius = cornerRadius,
+                nameButton = buttonText,
+                roundedCornerShape = RoundedCornerShape(20.dp)
+            ) {
+                onRetry.invoke()
+            }
+
+        }
     }
 
-    var icon by remember {
-        mutableIntStateOf(R.drawable.ic_network_error)
-    }
-
-    if (error == null){
-        message = "You have not saved data so far !"
-        icon = R.drawable.ic_search_document
-    }else{
-        message = error
-    }
-
-    var startAnimation by remember {
-        mutableStateOf(false)
-    }
-
-    val alphaAnimation by animateFloatAsState(
-        targetValue = if (startAnimation) 0.3f else 0f,
-        animationSpec = tween(durationMillis = 3000),
-        label = ""
-    )
-
-    LaunchedEffect(key1 = true) {
-        startAnimation = true
-    }
-
-    EmptyContent(alphaAnim = alphaAnimation, message = message, iconId = icon)
-
-}
-
-@Composable
-fun EmptyContent(alphaAnim: Float, message: String, iconId: Int) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Icon(
-            painter = painterResource(id = iconId),
-            contentDescription = null,
-            tint = if (isSystemInDarkTheme()) LightGray else DarkGray,
-            modifier = Modifier
-                .size(120.dp)
-                .alpha(alphaAnim)
-        )
-        Text(
-            modifier = Modifier
-                .padding(10.dp)
-                .alpha(alphaAnim),
-            text = message,
-            style = MaterialTheme.typography.bodyMedium,
-            color = if (isSystemInDarkTheme()) LightGray else DarkGray,
-        )
-    }
 }

@@ -42,7 +42,7 @@ fun LoadingScreen(modifier: Modifier = Modifier) {
 fun LoadingAnimation(
     modifier: Modifier = Modifier,
     circleSize: Dp = 24.dp,
-    circleColor: Color = MaterialTheme.colorScheme.primary,
+    circleColor: Color = Color(0xFFff669f),
     spaceBetween: Dp = 10.dp,
     travelDistance: Dp = 20.dp
 ) {

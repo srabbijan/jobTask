@@ -29,7 +29,7 @@ fun NavGraph(
                 val viewModel: DashboardViewModel = hiltViewModel()
                 val state = viewModel.state.value
                 DashboardScreen(
-                    state = state,
+                    state = state,viewModel::onEvent
                 )
             }
         }
