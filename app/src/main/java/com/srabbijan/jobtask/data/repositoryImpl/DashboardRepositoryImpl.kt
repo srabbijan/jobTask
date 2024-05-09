@@ -1,5 +1,6 @@
 package com.srabbijan.jobtask.data.repositoryImpl
 
+import com.srabbijan.jobtask.data.local.dao.DemoDao
 import com.srabbijan.jobtask.data.remote.ApiServices
 import com.srabbijan.jobtask.data.remote.dto.DemoRemoteData
 import com.srabbijan.jobtask.domain.repository.DashboardRepository
@@ -12,13 +13,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class DashboardRepositoryImpl(
-    private val apiServices: ApiServices
+    private val apiServices: ApiServices,
+    private val demoDao: DemoDao
 ) : DashboardRepository {
 
     override fun fetchDemoData(): Flow<DataResource<*>> = flow {
 
         val data = safeApiCall(Dispatchers.IO) {
-            apiServices.fetchData()
+            apiServices.fetchRemoteVideoList()
         }
         when (data.status) {
 
@@ -37,14 +39,20 @@ class DashboardRepositoryImpl(
             }
 
             Status.ERROR -> {
-                emit(
-                    DataResource.error(
-                        errorType = ErrorType.API,
-                        code = data.code,
-                        message = data.message,
-                        data = null
+                val localData = demoDao.fetchLocalData()
+                if (localData.isEmpty()) {
+                    emit(
+                        DataResource.error(
+                            errorType = ErrorType.API,
+                            code = data.code,
+                            message = data.message,
+                            data = null
+                        )
                     )
-                )
+                } else {
+                    emit(DataResource.success(data = localData))
+                }
+
             }
 
             Status.LOADING -> {

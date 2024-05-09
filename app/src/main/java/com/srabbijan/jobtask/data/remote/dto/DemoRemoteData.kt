@@ -1,12 +1,16 @@
 package com.srabbijan.jobtask.data.remote.dto
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
+@Entity(tableName = "demo_remote_data_table")
 data class DemoRemoteData(
-    @SerializedName("id"           ) var id           : String?  = null,
+    @PrimaryKey
+    @SerializedName("id"           ) var id           : Int,
     @SerializedName("title"        ) var title        : String?  = null,
     @SerializedName("thumbnailUrl" ) var thumbnailUrl : String?  = null,
     @SerializedName("duration"     ) var duration     : String?  = null,

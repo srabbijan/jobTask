@@ -40,8 +40,9 @@ object AppModule {
     @Provides
     @Singleton
     fun provideDashboardRepository(
-        apiServices: ApiServices
-    ): DashboardRepository = DashboardRepositoryImpl(apiServices)
+        apiServices: ApiServices,
+        demoDao: DemoDao
+    ): DashboardRepository = DashboardRepositoryImpl(apiServices, demoDao)
 
     @Provides
     @Singleton
