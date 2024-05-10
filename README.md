@@ -8,7 +8,7 @@ This project developed using Kotlin. This is mirrors the functionalities of the 
 3. **Clean Architecture**
 4. **Offline Support: Sqlite DB | Room (ORM)**
 5. **Playlist Viewing**
-6. **Video Detail and Play**
+6. **Video Details and Play**
 7. **Responsive UI**
 8. **Material Design Components**
 
