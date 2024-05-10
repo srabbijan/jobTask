@@ -1,8 +1,6 @@
 package com.srabbijan.jobtask.presentation.commonComponents.videoPlayer
 
-import android.os.Build
 import androidx.annotation.OptIn
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -39,7 +37,7 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import com.srabbijan.jobtask.presentation.commonComponents.customImage.NetworkImage
 
-@RequiresApi(Build.VERSION_CODES.S)
+
 @OptIn(UnstableApi::class)
 @Composable
 fun CustomVideoPlayer(
