@@ -38,6 +38,12 @@ This project developed using Kotlin. This is mirrors the functionalities of the 
   - Room
 - **Image Loading**:
   - Coil
+  - 
+## 🚀 Future Plans
+  - Dark theme enable
+
+# Open To Work
+Do you wanna Convert your thoughts into Physicall & Successfull Project Then I'm here for you. I'm open to work, available for Freelance or Remote Work Opportunities. Feel free to reach me out on Email.
 
 ## 🤝 Connect with Me
 
