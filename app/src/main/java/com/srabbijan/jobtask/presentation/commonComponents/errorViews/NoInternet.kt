@@ -9,8 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,10 +22,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.srabbijan.jobtask.R
+import com.srabbijan.jobtask.presentation.commonComponents.buttons.GradientButton
 
 
 @Composable
-fun NoInternet() {
+fun NoInternet(
+    buttonText: String = "Retry",
+    onRetry: () -> Unit
+) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -50,19 +53,16 @@ fun NoInternet() {
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.height(14.dp))
-            Button(
-                onClick = {
-
-                },
-                modifier = Modifier.align(Alignment.CenterHorizontally),
-                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
+            Spacer(modifier = Modifier.height(24.dp))
+            val cornerRadius = 16.dp
+            val gradientColor = listOf(Color(0xFFff669f), Color(0xFFff8961))
+            GradientButton(
+                gradientColors = gradientColor,
+                cornerRadius = cornerRadius,
+                nameButton = buttonText,
+                roundedCornerShape = RoundedCornerShape(20.dp)
             ) {
-                Text(
-                    text = "Retry",
-                    color = MaterialTheme.colorScheme.secondary,
-                    fontWeight = FontWeight.Bold
-                )
+                onRetry.invoke()
             }
         }
     }

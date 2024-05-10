@@ -71,71 +71,7 @@ fun ShimmerItem(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        //TopAppBar
-        TopAppBar(
-            title = {
-                Spacer(
-                    modifier = Modifier
-                        .size(width = 120.dp, height = 40.dp)
-                        .clip(
-                            shape = RoundedCornerShape(12.dp)
-                        )
-                        .background(brush = brush)
-                )
-            },
-            actions = {
-                Spacer(
-                    modifier = Modifier
-                        .size(35.dp)
-                        .clip(shape = RoundedCornerShape(14.dp))
-                        .background(brush = brush)
-                )
-                Spacer(modifier = Modifier.width(4.dp))
-                Spacer(
-                    modifier = Modifier
-                        .size(35.dp)
-                        .clip(shape = RoundedCornerShape(14.dp))
-                        .background(brush = brush)
-                )
-                Spacer(modifier = Modifier.width(4.dp))
 
-                Spacer(
-                    modifier = Modifier
-                        .size(35.dp)
-                        .clip(shape = RoundedCornerShape(14.dp))
-                        .background(brush = brush)
-                )
-                Spacer(modifier = Modifier.width(4.dp))
-
-                Spacer(
-                    modifier = Modifier
-                        .size(35.dp)
-                        .clip(shape = RoundedCornerShape(14.dp))
-                        .background(brush = brush)
-                )
-            },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        LazyRow(
-            modifier = Modifier.fillMaxWidth()
-                .padding(6.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start
-        ) {
-            item {
-                repeat(20) {
-                    Spacer(
-                        modifier = Modifier.width(45.dp)
-                            .height(45.dp)
-                            .clip(shape = RoundedCornerShape(14.dp))
-                            .background(brush = brush)
-                    )
-                    Spacer(modifier = Modifier.width(6.dp))
-                }
-            }
-        }
-        Spacer(modifier = Modifier.height(8.dp))
         LazyVerticalGrid(
             columns = GridCells.Adaptive(300.dp)
         ) {

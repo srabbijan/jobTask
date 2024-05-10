@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.srabbijan.jobtask.R
 import com.srabbijan.jobtask.presentation.commonComponents.buttons.GradientButton
+import com.srabbijan.jobtask.utils.isConnected
 
 @Composable
 fun EmptyScreen(
@@ -31,66 +32,72 @@ fun EmptyScreen(
     buttonText: String = "Retry",
     onRetry: () -> Unit
 ) {
+    if (!isConnected()) {
+        Surface(modifier = Modifier.fillMaxSize()) {
 
-    Surface(modifier = Modifier.fillMaxSize()) {
-
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-
-            Image(
-                painter = painterResource(id = R.drawable.oh_no),
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
-                modifier = Modifier
-                    .height(200.dp)
-                    .fillMaxWidth(),
-
-                )
-
-            Spacer(modifier = Modifier.height(20.dp))
-            //.........................Text: title
-            Text(
-                text = "Ops!",
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .padding(top = 20.dp)
-                    .fillMaxWidth(),
-                letterSpacing = 2.sp,
-                fontWeight = FontWeight.Bold,
-                style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.primary,
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-
-            //.........................Text : description
-            Text(
-                text = errorMsg,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .padding(top = 10.dp, start = 25.dp, end = 25.dp)
-                    .fillMaxWidth(),
-                letterSpacing = 1.sp,
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.primary,
-            )
-            //.........................Spacer
-            Spacer(modifier = Modifier.height(24.dp))
-
-            val cornerRadius = 16.dp
-            val gradientColor = listOf(Color(0xFFff669f), Color(0xFFff8961))
-            GradientButton(
-                gradientColors = gradientColor,
-                cornerRadius = cornerRadius,
-                nameButton = buttonText,
-                roundedCornerShape = RoundedCornerShape(20.dp)
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                onRetry.invoke()
-            }
 
+                Image(
+                    painter = painterResource(id = R.drawable.oh_no),
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier
+                        .height(200.dp)
+                        .fillMaxWidth(),
+
+                    )
+
+                Spacer(modifier = Modifier.height(20.dp))
+                //.........................Text: title
+                Text(
+                    text = "Oops!",
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .padding(top = 20.dp)
+                        .fillMaxWidth(),
+                    letterSpacing = 2.sp,
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+
+                //.........................Text : description
+                Text(
+                    text = errorMsg,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .padding(top = 10.dp, start = 25.dp, end = 25.dp)
+                        .fillMaxWidth(),
+                    letterSpacing = 1.sp,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+                //.........................Spacer
+                Spacer(modifier = Modifier.height(24.dp))
+
+                val cornerRadius = 16.dp
+                val gradientColor = listOf(Color(0xFFff669f), Color(0xFFff8961))
+                GradientButton(
+                    gradientColors = gradientColor,
+                    cornerRadius = cornerRadius,
+                    nameButton = buttonText,
+                    roundedCornerShape = RoundedCornerShape(20.dp)
+                ) {
+                    onRetry.invoke()
+                }
+
+            }
+        }
+    } else {
+        NoInternet{
+            onRetry.invoke()
         }
     }
+
 
 }
