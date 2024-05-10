@@ -26,7 +26,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -39,6 +40,16 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    kotlin {
+        sourceSets.configureEach {
+            kotlin.srcDir(layout.buildDirectory.files("generated/ksp/$name/kotlin/"))
+        }
+        sourceSets.all {
+            languageSettings {
+                languageVersion = "2.0"
+            }
+        }
     }
     buildFeatures {
         compose = true
@@ -119,7 +130,7 @@ dependencies {
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.exoplayer.dash)
     implementation(libs.androidx.media3.ui)
-    implementation(libs.ffmpeg.platform)
+
     implementation(libs.core)
     implementation(libs.custom.ui)
 }
