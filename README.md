@@ -45,8 +45,8 @@ Let's chat about potential projects, job opportunities, or collaboration! Feel f
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/srabbijan)
 [![Email](https://img.shields.io/badge/Email-Drop%20a%20Message-red?style=for-the-badge&logo=gmail)](mailto:srabbijan@gmail.com)
 
-##Screen Shots
+## Screen Shots
 - Find in the screenshot directory
 
-##Release APK
+## Release APK
 - Find in the release-apk directory
