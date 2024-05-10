@@ -47,6 +47,7 @@ Let's chat about potential projects, job opportunities, or collaboration! Feel f
 
 ## Screen Shots
 - Find in the screenshot directory
-
+## Screen Record
+- Find in the screenRecord directory
 ## Release APK
 - Find in the release-apk directory
