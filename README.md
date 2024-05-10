@@ -41,9 +41,11 @@ This project developed using Kotlin. This is mirrors the functionalities of the 
 
 ## 🤝 Connect with Me
 
-Let's chat about potential projects, job opportunities, or any other collaboration! Feel free to connect with me through the following channels:
+Let's chat about potential projects, job opportunities, or collaboration! Feel free to connect with me through the following channels:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/srabbijan)
 [![Email](https://img.shields.io/badge/Email-Drop%20a%20Message-red?style=for-the-badge&logo=gmail)](mailto:srabbijan@gmail.com)
 
-**Screen Recording added in ScreenRecording directory**
-**Screen Shots added in ScreenShots directory**
+##Screen Shots
+- Find in the screenshot directory
+##Release APL
+- Find in the releaseapk directory
